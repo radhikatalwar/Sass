@@ -1,0 +1,77 @@
+$white: white;
+$black: black;
+$green: #75dab4;
+$silver: #777;
+$columns: 12;
+$var-font-lg: 50px;
+$var-font-small: 50px;
+$var-font: arial;
+$font-family-monospace: Menlo, Consolas, "Courier New", monospace;
+
+// can store font names,font size,colours etc.
+// It should start with $
+
+//Advantage : If value needs to be changed then we can change globally by changing only one variable
+
+/* Mapping in Variables */
+
+$font-size: (
+  "mobile": 16px,
+  "tablet": 20px,
+  "desktop": 30px,
+);
+
+//TO USE THIS MAPPED VARIABLE
+h1 {
+  font-size: map-get($map: $font-size, $key: "desktop"); 
+}
+
+/* FLOW CONTROL SCOPE */
+
+$light-background: #f2ece4;
+$light-text: #036;
+$dark-background: #6b717f;
+$dark-text: #d2e1dd;
+
+
+/* IF-ELSE */
+
+@mixin theme-colors($light-theme: true) {
+  @if $light-theme {
+    background-color: $light-background;
+    color: $light-text;
+  } @else {
+    background-color: $dark-background;
+    color: $dark-text;
+  }
+}
+
+.banner {
+  @include theme-colors($light-theme: true);
+  body.dark & {
+    @include theme-colors($light-theme: false);
+  }
+}
+
+/* Each */
+$sizes: 40px, 50px, 80px;
+
+@each $size in $sizes {
+  .icon-#{$size} {
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+}
+
+/* For */
+
+$base-color: #036;
+
+@for $i from 1 through 3 {
+  ul:nth-child(3n + #{$i}) {
+    background-color: lighten($base-color, $i * 5%);
+  }
+}
+
+//WHILE

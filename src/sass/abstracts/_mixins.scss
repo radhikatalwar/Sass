@@ -1,0 +1,85 @@
+//They are like functions,reduce code repetition
+
+@mixin bgImage($image) {
+  background: url($image);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1{
+  @include flexCenter;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flexVertical {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flexHort($d, $ai: center) {
+  display: $d;
+  align-items: $ai;
+}
+
+@mixin responsive($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+.error {
+  background-color: #fee;
+}
+
+.error--serious {
+  @extend .error;
+  border-width: 3px;
+}
+
+// .error, .error--serious {
+//   background-color: #fee;
+// }
+
+// .error--serious {
+//   border-width: 3px;
+// }
+
+/* MIX DRYING */
+@mixin triangle($size, $color, $direction) {
+  height: 0;
+  width: 0;
+
+  border-color: transparent;
+  border-style: solid;
+  border-width: $size;
+
+  @if $direction == up {
+    border-bottom-color: $color;
+  } @else if $direction == right {
+    border-left-color: red;
+  } @else if $direction == down {
+    border-top-color: $color;
+  } @else if $direction == left {
+    border-right-color: blue;
+  } @else {
+    @error "Unknown direction #{$direction}.";
+  }
+}
+
+.next {
+  @include triangle(5px, black, left);
+}
+
+
+
+

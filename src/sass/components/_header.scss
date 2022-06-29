@@ -1,0 +1,39 @@
+/* HEADER COMPONENT  */
+
+.header {
+  width: 100%;
+  height: 80vh;
+  @include bgImage(
+    "https://images.pexels.com/photos/205421/pexels-photo-205421.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+  );
+  background-color: rgba(0, 0, 0, 0.6);
+  @include flexCenter;
+  color: $white;
+
+  &__content {
+    text-align: center;
+
+    &-h1 {
+      font-size: 75px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      font-weight: 600;
+     
+    }
+
+    &-links{ a {
+      text-decoration: none;
+      color: $white;
+      margin-left: 15px;
+      font-size: 17px;
+    }}
+    &-span {
+      display: inline-block;
+      height: 15px;
+      width: 1.5px;
+      background: $white;
+      margin-left: 20px;
+      transform: rotate(10deg);
+    }
+  }
+}
